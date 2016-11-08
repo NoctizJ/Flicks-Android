@@ -8,6 +8,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
 import com.yahoo.yuningj.flicks.Models.Movie;
 import com.yahoo.yuningj.flicks.R;
 
@@ -45,6 +46,8 @@ public class MovieArrayAdapter extends ArrayAdapter<Movie> {
         // populate data
         tvTitle.setText(movie.getOriginalTitle());
         tvOverview.setText(movie.getOverview());
+
+        Picasso.with(getContext()).load(movie.getPosterPath()).into(ivImage);
 
         return convertView;
     }
