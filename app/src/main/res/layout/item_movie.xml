@@ -8,7 +8,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/tvTitle"
-        android:textSize="22sp"
+        android:textSize="@dimen/movie_title_font"
         android:textStyle="bold"
         android:layout_alignParentTop="true"
         android:layout_toRightOf="@+id/ivMovieImage"
@@ -20,7 +20,8 @@
         android:layout_height="wrap_content"
         android:id="@+id/tvOverview"
         android:layout_below="@+id/tvTitle"
-        android:layout_toRightOf="@+id/ivMovieImage" />
+        android:layout_toRightOf="@+id/ivMovieImage"
+        android:textSize="@dimen/movie_overview_font" />
 
     <ImageView
         android:layout_width="wrap_content"
