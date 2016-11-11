@@ -69,7 +69,7 @@ public class MovieArrayAdapter extends ArrayAdapter<Movie> {
 
         int orientation = getContext().getResources().getConfiguration().orientation;
         if (orientation == Configuration.ORIENTATION_PORTRAIT) {
-            viewHolder.movieTitle.setPadding(60, 10, 0, 0);
+            viewHolder.movieTitle.setPadding(45, 10, 0, 0);
         } else if (orientation == Configuration.ORIENTATION_LANDSCAPE) {
             viewHolder.movieTitle.setPadding(100, 40, 0, 30);
             viewHolder.movieOverview.setTextSize(15);
