@@ -1,6 +1,7 @@
 package com.yahoo.yuningj.flicks.Adapters;
 
 import android.content.Context;
+import android.content.res.Configuration;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -64,6 +65,16 @@ public class MovieArrayAdapter extends ArrayAdapter<Movie> {
         viewHolder.movieOverview.setText(movie.getOverview());
         viewHolder.movieImage.setImageResource(0);
         Picasso.with(getContext()).load(movie.getPosterPath()).into(viewHolder.movieImage);
+
+
+        int orientation = getContext().getResources().getConfiguration().orientation;
+        if (orientation == Configuration.ORIENTATION_PORTRAIT) {
+            viewHolder.movieTitle.setPadding(60, 10, 0, 0);
+        } else if (orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            viewHolder.movieTitle.setPadding(100, 40, 0, 30);
+            viewHolder.movieOverview.setTextSize(15);
+            viewHolder.movieTitle.setTextSize(21);
+        }
 
         return convertView;
     }

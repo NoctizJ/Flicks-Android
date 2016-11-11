@@ -8,4 +8,23 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="portraitTitle">
+        <item name="android:textColor">#99E6FF</item>
+        <item name="android:textSize">40sp</item>
+    </style>
+
+    <style name="portraitOverview">
+        <item name="android:textColor">#2B2B2B</item>
+        <item name="android:textSize">40sp</item>
+    </style>
+
+    <style name="landTitle">
+        <item name="android:textColor">#C80000</item>
+        <item name="android:textSize">40sp</item>
+    </style>
+
+    <style name="landOverview">
+        <item name="android:textColor">#F7F7F7</item>
+        <item name="android:textSize">40sp</item>
+    </style>
 </resources>
