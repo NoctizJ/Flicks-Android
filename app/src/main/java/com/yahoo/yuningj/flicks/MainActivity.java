@@ -31,6 +31,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        getSupportActionBar().hide();
+
         lvItems = (ListView)findViewById(R.id.lvMovies);
         movies = new ArrayList<Movie>();
         movieAdapter = new MovieArrayAdapter(this, movies);
