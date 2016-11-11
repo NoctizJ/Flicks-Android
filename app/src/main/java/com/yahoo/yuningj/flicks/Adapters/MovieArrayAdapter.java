@@ -20,6 +20,12 @@ import java.util.List;
 
 public class MovieArrayAdapter extends ArrayAdapter<Movie> {
 
+    private static class ViewHolder {
+        TextView movieTitle;
+        TextView movieOverview;
+        ImageView movieImage;
+    }
+
     public MovieArrayAdapter(Context context, List<Movie> movies) {
         super(context, android.R.layout.simple_list_item_1, movies);
     }
@@ -28,26 +34,36 @@ public class MovieArrayAdapter extends ArrayAdapter<Movie> {
     public View getView(int position, View convertView, ViewGroup parent) {
         //get the data item for position
         Movie movie = getItem(position);
-
         //check the existing view being reused
+        ViewHolder viewHolder;
         if (convertView == null) {
+            viewHolder = new ViewHolder();
+
             LayoutInflater inflater = LayoutInflater.from(getContext());
             convertView = inflater.inflate(R.layout.item_movie, parent, false);
+
+            viewHolder.movieTitle = (TextView) convertView.findViewById(R.id.tvTitle);
+            viewHolder.movieOverview = (TextView) convertView.findViewById(R.id.tvOverview);
+            viewHolder.movieImage = (ImageView) convertView.findViewById(R.id.ivMovieImage) ;
+
+            convertView.setTag(viewHolder);
+        } else {
+            viewHolder = (ViewHolder) convertView.getTag();
         }
 
-        //find the image view
-        ImageView ivImage = (ImageView) convertView.findViewById(R.id.ivMovieImage);
-        //clear out image from convertView
-        ivImage.setImageResource(0);
+//        //find the image view
+//        ImageView ivImage = (ImageView) convertView.findViewById(R.id.ivMovieImage);
+//        //clear out image from convertView
+//        ivImage.setImageResource(0);
 
-        TextView tvTitle = (TextView) convertView.findViewById(R.id.tvTitle);
-        TextView tvOverview = (TextView) convertView.findViewById(R.id.tvOverview);
+//        TextView tvTitle = (TextView) convertView.findViewById(R.id.tvTitle);
+//        TextView tvOverview = (TextView) convertView.findViewById(R.id.tvOverview);
 
         // populate data
-        tvTitle.setText(movie.getOriginalTitle());
-        tvOverview.setText(movie.getOverview());
-
-        Picasso.with(getContext()).load(movie.getPosterPath()).into(ivImage);
+        viewHolder.movieTitle.setText(movie.getOriginalTitle());
+        viewHolder.movieOverview.setText(movie.getOverview());
+        viewHolder.movieImage.setImageResource(0);
+        Picasso.with(getContext()).load(movie.getPosterPath()).into(viewHolder.movieImage);
 
         return convertView;
     }
